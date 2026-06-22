@@ -12,7 +12,13 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const CON_CA =
-  "YOUR_CONTRACT_ADDRESS_HERE";
+  "---";
+
+  const shortenAddress = (address) => {
+  if (!address) return "";
+  return `${address.slice(0, 4)}...${address.slice(-4)}`; // Shows first 4 and last 4 characters
+};
+
   const copyCA = async () => {
   await navigator.clipboard.writeText(CON_CA);
 
@@ -110,9 +116,7 @@ export default function App() {
       CA:
     </span>
 
-    <span>
-      {CON_CA}
-    </span>
+    <span>{shortenAddress(CON_CA)}</span> 
 
     <button
   onClick={copyCA}
