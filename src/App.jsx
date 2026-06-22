@@ -10,6 +10,18 @@ export default function App() {
   const [token, setToken] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const CON_CA =
+  "YOUR_CONTRACT_ADDRESS_HERE";
+  const copyCA = async () => {
+  await navigator.clipboard.writeText(CON_CA);
+
+  setCopied(true);
+
+  setTimeout(() => {
+    setCopied(false);
+  }, 2000);
+};
 
   const analyze = async () => {
     if (!token) return;
@@ -75,10 +87,53 @@ export default function App() {
             <p className="text-zinc-400 mt-3 text-lg">
               Instant Solana Rug Detection
             </p>
+
+<div className="mt-8 flex justify-center">
+
+  <div className="
+    bg-green-500/10
+    border
+    border-green-500/20
+    rounded-full
+    px-5
+    py-3
+    flex
+    items-center
+    gap-3
+  ">
+
+    <span className="text-green-400 font-bold">
+      $CON
+    </span>
+
+    <span className="text-zinc-400">
+      CA:
+    </span>
+
+    <span>
+      {CON_CA}
+    </span>
+
+    <button
+  onClick={copyCA}
+  className="
+    px-5
+    rounded-xl
+    bg-green-500
+    hover:bg-green-400
+    font-bold
+  "
+>
+  {copied ? "Copied!" : "Copy"}
+</button>
+
+  </div>
+
+</div>
             
 
             
-                        <div className="
+            <div className="
               flex
               justify-center
               gap-10
