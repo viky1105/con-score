@@ -12,7 +12,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const CON_CA =
-  "---";
+  "9nn54qDuj5Fnbt4zN5w9e7YC5V1riboKd62z5iztpump";
 
   const shortenAddress = (address) => {
   if (!address) return "";
